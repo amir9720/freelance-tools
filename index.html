@@ -3,123 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelance Hourly Rate Calculator | Free Business Tools</title>
-  <meta name="description" content="Calculate your true freelance hourly rate based on income goals, taxes, expenses, and non-billable hours. Free and instant calculator.">
+  <title>Freelance Hub | Hourly Rate & Platform Fee Calculators</title>
+  <meta name="description" content="Free financial calculators for freelancers and remote workers. Calculate true hourly rates, platform fees for Upwork, Fiverr, PayPal, and Stripe instantly.">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- هدر سایت -->
-  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50 shadow-sm">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#" class="text-xl font-extrabold text-indigo-600 tracking-tight">FreelanceHub Tools</a>
-      <nav class="space-x-4 text-sm font-medium text-slate-600">
-        <a href="#calculator" class="hover:text-indigo-600">Calculator</a>
-        <a href="#guide" class="hover:text-indigo-600">Pricing Guide</a>
+      <a href="#" class="text-xl font-extrabold text-indigo-600 tracking-tight flex items-center gap-2">
+        <span>⚡ FreelanceHub</span>
+      </a>
+      <nav class="space-x-3 sm:space-x-6 text-xs sm:text-sm font-medium text-slate-600">
+        <a href="#rate-calculator" class="hover:text-indigo-600 transition">Rate Calc</a>
+        <a href="#fee-calculator" class="hover:text-indigo-600 transition">Fee Calc</a>
+        <a href="#about" class="hover:text-indigo-600 transition">About</a>
+        <a href="#privacy" class="hover:text-indigo-600 transition">Privacy</a>
       </nav>
     </div>
   </header>
 
-  <!-- بدنه اصلی -->
-  <main class="flex-grow max-w-5xl mx-auto px-4 py-10 w-full" id="calculator">
-    <div class="text-center mb-10">
-      <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Financial Estimator</span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Freelance Hourly Rate Calculator</h1>
-      <p class="mt-3 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-        Stop undercharging your clients. Discover your optimal hourly and day rates by factoring in self-employment taxes, overheads, and non-billable hours.
-      </p>
-    </div>
+  <!-- Main Container -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full space-y-20">
 
-    <!-- فرم و کارت خروجی -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-      
-      <!-- پنل ورودی -->
-      <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-5">
-        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">Input Your Target Numbers</h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Target Net Income ($/year)</label>
-            <input id="netIncome" type="number" value="60000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Annual Expenses ($/year)</label>
-            <input id="expenses" type="number" value="12000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Estimated Tax Rate (%)</label>
-            <input id="taxRate" type="number" value="25" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Vacation/Time Off (Weeks)</label>
-            <input id="weeksOff" type="number" value="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Total Hours Worked / Week</label>
-            <input id="hoursPerWeek" type="number" value="40" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Billable Ratio (<span id="ratioDisplay">70</span>%)</label>
-            <input id="billableRatio" type="range" min="30" max="95" value="70" class="w-full accent-indigo-600 mt-2">
-            <span class="text-[11px] text-slate-400 block mt-1">Non-billable: admin, marketing, invoices</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- پنل نتایج -->
-      <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col justify-between">
-        <div>
-          <span class="text-indigo-400 text-xs uppercase tracking-widest block font-bold">Recommended Rate</span>
-          <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-5 mb-5">
-            <span id="hourlyRateResult" class="text-5xl font-extrabold text-indigo-400">$68</span>
-            <span class="text-slate-400">/ hour</span>
-          </div>
-          <div class="space-y-3 text-sm">
-            <div class="flex justify-between text-slate-300">
-              <span>Standard Day Rate (8h):</span>
-              <strong id="dailyRateResult" class="text-white">$544</strong>
-            </div>
-            <div class="flex justify-between text-slate-300">
-              <span>Total Revenue Target:</span>
-              <strong id="totalRevenueResult" class="text-white">$92,000</strong>
-            </div>
-            <div class="flex justify-between text-slate-300">
-              <span>Billable Hours per Year:</span>
-              <strong id="billableHoursResult" class="text-white">1,344 hrs</strong>
-            </div>
-          </div>
-        </div>
-        <p class="text-[11px] text-slate-400 mt-6 pt-4 border-t border-slate-800">
-          * Calculated instantly based on your local overheads, unbillable hours, and safety margins.
+    <!-- TOOL 1: Hourly Rate Calculator -->
+    <section id="rate-calculator" class="pt-4">
+      <div class="text-center mb-8">
+        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #1</span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Freelance Hourly Rate Calculator</h1>
+        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
+          Determine your sustainable rate accounting for taxes, expenses, and actual billable hours.
         </p>
       </div>
 
-    </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Input Form -->
+        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Annual Financial Targets</h2>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Target Net Income ($/yr)</label>
+              <input id="netIncome" type="number" value="60000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Annual Expenses ($/yr)</label>
+              <input id="expenses" type="number" value="12000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Estimated Tax (%)</label>
+              <input id="taxRate" type="number" value="25" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Weeks Off / Vacation</label>
+              <input id="weeksOff" type="number" value="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Total Hours / Week</label>
+              <input id="hoursPerWeek" type="number" value="40" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Billable Ratio (<span id="ratioDisplay">70</span>%)</label>
+              <input id="billableRatio" type="range" min="30" max="95" value="70" class="w-full accent-indigo-600 mt-2">
+              <span class="text-[11px] text-slate-400 block mt-1">Admin, sales & pitches are non-billable</span>
+            </div>
+          </div>
+        </div>
 
-    <!-- متن سئو و محتوای راهنما برای ادسنس -->
-    <article id="guide" class="border-t border-slate-200 pt-10 text-slate-700 space-y-6 leading-relaxed">
-      <h2 class="text-2xl font-bold text-slate-900">How to Accurately Price Your Freelance Services</h2>
-      <p>
-        One of the biggest mistakes novice freelancers make is setting their hourly rate simply by dividing a previous salaried employee wage by 2,080 hours. In traditional employment, companies cover health insurance, hardware, office amenities, and paid leaves.
-      </p>
-      <h3 class="text-xl font-bold text-slate-800">Understanding Non-Billable Time</h3>
-      <p>
-        In reality, you cannot bill 40 hours a week to clients. Tasks such as writing proposals, organizing your bookkeeping, replying to emails, and maintaining client portfolios are essential but unbillable. High-performing freelancers typically average between 60% and 75% billable efficiency.
-      </p>
-      <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
-        <p class="text-sm font-semibold text-indigo-900">The Pricing Rule:</p>
-        <p class="text-sm text-indigo-800 mt-1">Target Rate = (Net Target / (1 - Tax%) + Business Costs) / (Annual Billable Hours)</p>
+        <!-- Output Card -->
+        <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
+          <div>
+            <span class="text-indigo-400 text-xs uppercase tracking-widest block font-bold">Recommended Minimum</span>
+            <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-4 mb-4">
+              <span id="hourlyRateResult" class="text-4xl sm:text-5xl font-extrabold text-indigo-400">$68</span>
+              <span class="text-slate-400">/ hr</span>
+            </div>
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between text-slate-300">
+                <span>Standard Day Rate (8h):</span>
+                <strong id="dailyRateResult" class="text-white">$544</strong>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>Gross Target Revenue:</span>
+                <strong id="totalRevenueResult" class="text-white">$92,000</strong>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>Annual Billable Hours:</span>
+                <strong id="billableHoursResult" class="text-white">1,344 hrs</strong>
+              </div>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-6 pt-3 border-t border-slate-800">
+            * Covers business expenses, social security contributions, and unbilled administrative hours.
+          </p>
+        </div>
       </div>
+    </section>
+
+    <!-- TOOL 2: Platform & Payment Fee Calculator -->
+    <section id="fee-calculator" class="pt-8 border-t border-slate-200">
+      <div class="text-center mb-8">
+        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #2</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Platform Fee & Net Payout Calculator</h2>
+        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
+          Find out exactly how much you take home after marketplace commissions and payment processor deductions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Input Form -->
+        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Contract Details</h3>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Invoice / Contract Amount ($)</label>
+              <input id="contractAmount" type="number" value="1000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Select Platform / Channel</label>
+              <select id="platformSelect" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 bg-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                <option value="upwork">Upwork (10% flat service fee)</option>
+                <option value="fiverr">Fiverr (20% commission)</option>
+                <option value="stripe">Direct Client via Stripe (2.9% + $0.30)</option>
+                <option value="paypal">Direct Client via PayPal (3.49% + $0.49)</option>
+                <option value="custom">Custom Percentage</option>
+              </select>
+            </div>
+
+            <div id="customRateContainer" class="hidden">
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Custom Fee Rate (%)</label>
+              <input id="customFeeRate" type="number" value="5" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-xs uppercase tracking-widest block font-bold">Your Take-Home Amount</span>
+            <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-4 mb-4">
+              <span id="netPayoutResult" class="text-4xl sm:text-5xl font-extrabold text-emerald-400">$900.00</span>
+            </div>
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between text-slate-300">
+                <span>Platform Cut / Fees:</span>
+                <strong id="feeAmountResult" class="text-red-400">-$100.00</strong>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>Client Invoiced Total:</span>
+                <strong id="grossInvoicedResult" class="text-white">$1,000.00</strong>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>To receive the full amount, charge:</span>
+                <strong id="chargeToGetFullResult" class="text-emerald-300">$1,111.11</strong>
+              </div>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-6 pt-3 border-t border-slate-800">
+            * Tip: Always ask clients to cover processing fees or build them directly into your initial proposal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT LAYER: SEO Guide (Mandatory for AdSense) -->
+    <article class="bg-white p-8 rounded-2xl border border-slate-200 text-slate-700 space-y-6 leading-relaxed">
+      <h2 class="text-2xl font-bold text-slate-900">The Economics of Freelance Pricing</h2>
+      <p>
+        Navigating remote contracting requires a solid understanding of hidden fees and operational costs. Working independently offers flexibility, but failing to price in operational overhead or marketplace cuts will directly reduce your net take-home salary.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-800">1. Factoring in Marketplace Deductions</h3>
+      <p>
+        Freelance marketplaces like Upwork and Fiverr provide access to high-paying international clients, but charge between 10% and 20% in transaction fees. When scoping a project on these networks, use our Take-Home Calculator to reverse-engineer your quotes so that your net income meets your lifestyle targets.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-800">2. Why Billable Hours Are Not Total Hours</h3>
+      <p>
+        A standard full-time employee works 2,080 hours a year. As a freelancer, spending 40 hours a week on client deliverables is neither realistic nor sustainable. You must account for business development, client communications, bookkeeping, self-funded holidays, and potential periods between contracts. A healthy ratio is typically between 60% and 75% billable time.
+      </p>
     </article>
+
+    <!-- MANDATORY LEGAL SECTIONS (AdSense Approval Requirement) -->
+    <section id="about" class="pt-8 border-t border-slate-200">
+      <h3 class="text-xl font-bold text-slate-900 mb-3">About FreelanceHub Tools</h3>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        FreelanceHub Tools is a free online platform built to empower self-employed professionals, independent consultants, and remote contractors worldwide. Our lightweight, browser-based calculators eliminate guesswork from rate calculations, platform fee deductions, and contract scoping without storing personal financial information.
+      </p>
+    </section>
+
+    <section id="privacy" class="pt-4 border-t border-slate-200">
+      <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy & Terms</h3>
+      <div class="text-slate-600 text-xs sm:text-sm space-y-2 leading-relaxed">
+        <p>
+          <strong>Data Privacy:</strong> All calculations are executed directly within your web browser using client-side JavaScript. We do not transmit, log, or store your inputted financial data on any external servers.
+        </p>
+        <p>
+          <strong>Advertising & Cookies:</strong> We may partner with third-party advertising vendors, including Google, which use cookies to serve relevant advertisements based on users' visits to this and other websites. Users may opt out of personalized advertising by visiting Google Ads Settings.
+        </p>
+        <p>
+          <strong>Disclaimer:</strong> The calculations provided are estimates meant solely for informational purposes. They do not constitute formal legal, tax, or financial advisory.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="pt-4 border-t border-slate-200">
+      <h3 class="text-xl font-bold text-slate-900 mb-3">Contact Us</h3>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        Have feedback, questions, or tool suggestions? Feel free to reach out to our team at: <span class="font-medium text-indigo-600">contact@freelancehub-tools.com</span>
+      </p>
+    </section>
+
   </main>
 
-  <!-- فوتر قانونی ادسنس -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
-    <p>© 2026 FreelanceHub Tools. All rights reserved. Free online productivity and finance calculators.</p>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 FreelanceHub Tools. Free financial calculators for independent contractors.</p>
   </footer>
 
-  <!-- اسکریپت محاسبات آنی -->
+  <!-- Combined Interactive Logic -->
   <script>
+    // --- Tool 1: Rate Calculator ---
     const netIncome = document.getElementById('netIncome');
     const expenses = document.getElementById('expenses');
     const taxRate = document.getElementById('taxRate');
@@ -133,7 +240,7 @@
     const totalRevenueResult = document.getElementById('totalRevenueResult');
     const billableHoursResult = document.getElementById('billableHoursResult');
 
-    function calculate() {
+    function calculateRate() {
       const net = parseFloat(netIncome.value) || 0;
       const exp = parseFloat(expenses.value) || 0;
       const tax = Math.min(parseFloat(taxRate.value) || 0, 90);
@@ -157,10 +264,69 @@
     }
 
     [netIncome, expenses, taxRate, weeksOff, hoursPerWeek, billableRatio].forEach(input => {
-      input.addEventListener('input', calculate);
+      input.addEventListener('input', calculateRate);
     });
 
-    calculate();
+    // --- Tool 2: Fee Calculator ---
+    const contractAmount = document.getElementById('contractAmount');
+    const platformSelect = document.getElementById('platformSelect');
+    const customRateContainer = document.getElementById('customRateContainer');
+    const customFeeRate = document.getElementById('customFeeRate');
+
+    const netPayoutResult = document.getElementById('netPayoutResult');
+    const feeAmountResult = document.getElementById('feeAmountResult');
+    const grossInvoicedResult = document.getElementById('grossInvoicedResult');
+    const chargeToGetFullResult = document.getElementById('chargeToGetFullResult');
+
+    function calculateFee() {
+      const gross = parseFloat(contractAmount.value) || 0;
+      const platform = platformSelect.value;
+      let fee = 0;
+      let neededToGetFull = gross;
+
+      if (platform === 'upwork') {
+        fee = gross * 0.10;
+        neededToGetFull = gross / 0.90;
+      } else if (platform === 'fiverr') {
+        fee = gross * 0.20;
+        neededToGetFull = gross / 0.80;
+      } else if (platform === 'stripe') {
+        fee = (gross * 0.029) + 0.30;
+        neededToGetFull = (gross + 0.30) / (1 - 0.029);
+      } else if (platform === 'paypal') {
+        fee = (gross * 0.0349) + 0.49;
+        neededToGetFull = (gross + 0.49) / (1 - 0.0349);
+      } else if (platform === 'custom') {
+        const customPct = (parseFloat(customFeeRate.value) || 0) / 100;
+        fee = gross * customPct;
+        neededToGetFull = customPct < 1 ? gross / (1 - customPct) : gross;
+      }
+
+      fee = Math.min(fee, gross);
+      const net = Math.max(0, gross - fee);
+
+      netPayoutResult.textContent = '$' + net.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      feeAmountResult.textContent = '-$' + fee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      grossInvoicedResult.textContent = '$' + gross.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      chargeToGetFullResult.textContent = '$' + neededToGetFull.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    platformSelect.addEventListener('change', () => {
+      if (platformSelect.value === 'custom') {
+        customRateContainer.classList.remove('hidden');
+      } else {
+        customRateContainer.classList.add('hidden');
+      }
+      calculateFee();
+    });
+
+    [contractAmount, customFeeRate].forEach(input => {
+      input.addEventListener('input', calculateFee);
+    });
+
+    // Run calculations on initial load
+    calculateRate();
+    calculateFee();
   </script>
 </body>
 </html>
