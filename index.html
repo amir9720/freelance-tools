@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Hourly Rate Calculator | Free Business Tools</title>
+  <meta name="description" content="Calculate your true freelance hourly rate based on income goals, taxes, expenses, and non-billable hours. Free and instant calculator.">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- هدر سایت -->
+  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="text-xl font-extrabold text-indigo-600 tracking-tight">FreelanceHub Tools</a>
+      <nav class="space-x-4 text-sm font-medium text-slate-600">
+        <a href="#calculator" class="hover:text-indigo-600">Calculator</a>
+        <a href="#guide" class="hover:text-indigo-600">Pricing Guide</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- بدنه اصلی -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 py-10 w-full" id="calculator">
+    <div class="text-center mb-10">
+      <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Financial Estimator</span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Freelance Hourly Rate Calculator</h1>
+      <p class="mt-3 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        Stop undercharging your clients. Discover your optimal hourly and day rates by factoring in self-employment taxes, overheads, and non-billable hours.
+      </p>
+    </div>
+
+    <!-- فرم و کارت خروجی -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+      
+      <!-- پنل ورودی -->
+      <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">Input Your Target Numbers</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Target Net Income ($/year)</label>
+            <input id="netIncome" type="number" value="60000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Annual Expenses ($/year)</label>
+            <input id="expenses" type="number" value="12000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Estimated Tax Rate (%)</label>
+            <input id="taxRate" type="number" value="25" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Vacation/Time Off (Weeks)</label>
+            <input id="weeksOff" type="number" value="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Total Hours Worked / Week</label>
+            <input id="hoursPerWeek" type="number" value="40" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Billable Ratio (<span id="ratioDisplay">70</span>%)</label>
+            <input id="billableRatio" type="range" min="30" max="95" value="70" class="w-full accent-indigo-600 mt-2">
+            <span class="text-[11px] text-slate-400 block mt-1">Non-billable: admin, marketing, invoices</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- پنل نتایج -->
+      <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col justify-between">
+        <div>
+          <span class="text-indigo-400 text-xs uppercase tracking-widest block font-bold">Recommended Rate</span>
+          <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-5 mb-5">
+            <span id="hourlyRateResult" class="text-5xl font-extrabold text-indigo-400">$68</span>
+            <span class="text-slate-400">/ hour</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between text-slate-300">
+              <span>Standard Day Rate (8h):</span>
+              <strong id="dailyRateResult" class="text-white">$544</strong>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span>Total Revenue Target:</span>
+              <strong id="totalRevenueResult" class="text-white">$92,000</strong>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span>Billable Hours per Year:</span>
+              <strong id="billableHoursResult" class="text-white">1,344 hrs</strong>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 mt-6 pt-4 border-t border-slate-800">
+          * Calculated instantly based on your local overheads, unbillable hours, and safety margins.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- متن سئو و محتوای راهنما برای ادسنس -->
+    <article id="guide" class="border-t border-slate-200 pt-10 text-slate-700 space-y-6 leading-relaxed">
+      <h2 class="text-2xl font-bold text-slate-900">How to Accurately Price Your Freelance Services</h2>
+      <p>
+        One of the biggest mistakes novice freelancers make is setting their hourly rate simply by dividing a previous salaried employee wage by 2,080 hours. In traditional employment, companies cover health insurance, hardware, office amenities, and paid leaves.
+      </p>
+      <h3 class="text-xl font-bold text-slate-800">Understanding Non-Billable Time</h3>
+      <p>
+        In reality, you cannot bill 40 hours a week to clients. Tasks such as writing proposals, organizing your bookkeeping, replying to emails, and maintaining client portfolios are essential but unbillable. High-performing freelancers typically average between 60% and 75% billable efficiency.
+      </p>
+      <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
+        <p class="text-sm font-semibold text-indigo-900">The Pricing Rule:</p>
+        <p class="text-sm text-indigo-800 mt-1">Target Rate = (Net Target / (1 - Tax%) + Business Costs) / (Annual Billable Hours)</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- فوتر قانونی ادسنس -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+    <p>© 2026 FreelanceHub Tools. All rights reserved. Free online productivity and finance calculators.</p>
+  </footer>
+
+  <!-- اسکریپت محاسبات آنی -->
+  <script>
+    const netIncome = document.getElementById('netIncome');
+    const expenses = document.getElementById('expenses');
+    const taxRate = document.getElementById('taxRate');
+    const weeksOff = document.getElementById('weeksOff');
+    const hoursPerWeek = document.getElementById('hoursPerWeek');
+    const billableRatio = document.getElementById('billableRatio');
+    const ratioDisplay = document.getElementById('ratioDisplay');
+
+    const hourlyRateResult = document.getElementById('hourlyRateResult');
+    const dailyRateResult = document.getElementById('dailyRateResult');
+    const totalRevenueResult = document.getElementById('totalRevenueResult');
+    const billableHoursResult = document.getElementById('billableHoursResult');
+
+    function calculate() {
+      const net = parseFloat(netIncome.value) || 0;
+      const exp = parseFloat(expenses.value) || 0;
+      const tax = Math.min(parseFloat(taxRate.value) || 0, 90);
+      const weeks = Math.max(0, 52 - (parseFloat(weeksOff.value) || 0));
+      const hours = parseFloat(hoursPerWeek.value) || 0;
+      const ratio = parseFloat(billableRatio.value) || 70;
+
+      ratioDisplay.textContent = ratio;
+
+      const grossNeeded = net / (1 - (tax / 100));
+      const totalRevenue = grossNeeded + exp;
+      const totalBillable = Math.max(1, (weeks * hours) * (ratio / 100));
+
+      const hourly = totalRevenue / totalBillable;
+      const daily = hourly * 8;
+
+      hourlyRateResult.textContent = '$' + Math.round(hourly);
+      dailyRateResult.textContent = '$' + Math.round(daily);
+      totalRevenueResult.textContent = '$' + Math.round(totalRevenue).toLocaleString();
+      billableHoursResult.textContent = Math.round(totalBillable).toLocaleString() + ' hrs';
+    }
+
+    [netIncome, expenses, taxRate, weeksOff, hoursPerWeek, billableRatio].forEach(input => {
+      input.addEventListener('input', calculate);
+    });
+
+    calculate();
+  </script>
+</body>
+</html>
