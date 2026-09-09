@@ -3,23 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelance Hub | Hourly Rate & Platform Fee Calculators</title>
-  <meta name="description" content="Free financial calculators for freelancers and remote workers. Calculate true hourly rates, platform fees for Upwork, Fiverr, PayPal, and Stripe instantly.">
+  <title>FreelanceHub | Essential Tools for Remote Professionals</title>
+  <meta name="description" content="Free calculators and invoice tools for freelancers. Estimate hourly rates, calculate marketplace fees, and generate clean professional invoices.">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media print {
+      body * { visibility: hidden; }
+      #printableInvoice, #printableInvoice * { visibility: visible; }
+      #printableInvoice { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20px; border: none; box-shadow: none; }
+      .no-print { display: none !important; }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- Header / Navigation -->
-  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50 shadow-sm">
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50 shadow-sm no-print">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <a href="#" class="text-xl font-extrabold text-indigo-600 tracking-tight flex items-center gap-2">
         <span>⚡ FreelanceHub</span>
       </a>
       <nav class="space-x-3 sm:space-x-6 text-xs sm:text-sm font-medium text-slate-600">
-        <a href="#rate-calculator" class="hover:text-indigo-600 transition">Rate Calc</a>
-        <a href="#fee-calculator" class="hover:text-indigo-600 transition">Fee Calc</a>
+        <a href="#rate-calculator" class="hover:text-indigo-600 transition">Rates</a>
+        <a href="#fee-calculator" class="hover:text-indigo-600 transition">Fees</a>
+        <a href="#invoice-generator" class="hover:text-indigo-600 transition">Invoice</a>
         <a href="#about" class="hover:text-indigo-600 transition">About</a>
-        <a href="#privacy" class="hover:text-indigo-600 transition">Privacy</a>
       </nav>
     </div>
   </header>
@@ -28,7 +36,7 @@
   <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full space-y-20">
 
     <!-- TOOL 1: Hourly Rate Calculator -->
-    <section id="rate-calculator" class="pt-4">
+    <section id="rate-calculator" class="pt-4 no-print">
       <div class="text-center mb-8">
         <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #1</span>
         <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Freelance Hourly Rate Calculator</h1>
@@ -38,10 +46,8 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <!-- Input Form -->
         <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Annual Financial Targets</h2>
-          
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Target Net Income ($/yr)</label>
@@ -66,12 +72,10 @@
             <div>
               <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Billable Ratio (<span id="ratioDisplay">70</span>%)</label>
               <input id="billableRatio" type="range" min="30" max="95" value="70" class="w-full accent-indigo-600 mt-2">
-              <span class="text-[11px] text-slate-400 block mt-1">Admin, sales & pitches are non-billable</span>
             </div>
           </div>
         </div>
 
-        <!-- Output Card -->
         <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
           <div>
             <span class="text-indigo-400 text-xs uppercase tracking-widest block font-bold">Recommended Minimum</span>
@@ -94,53 +98,40 @@
               </div>
             </div>
           </div>
-          <p class="text-[11px] text-slate-400 mt-6 pt-3 border-t border-slate-800">
-            * Covers business expenses, social security contributions, and unbilled administrative hours.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- TOOL 2: Platform & Payment Fee Calculator -->
-    <section id="fee-calculator" class="pt-8 border-t border-slate-200">
+    <!-- TOOL 2: Platform Fee Calculator -->
+    <section id="fee-calculator" class="pt-8 border-t border-slate-200 no-print">
       <div class="text-center mb-8">
         <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #2</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Platform Fee & Net Payout Calculator</h2>
         <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Find out exactly how much you take home after marketplace commissions and payment processor deductions.
+          Find out exactly how much you take home after marketplace commissions and payment deductions.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <!-- Input Form -->
         <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Contract Details</h3>
-          
           <div class="space-y-4">
             <div>
               <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Invoice / Contract Amount ($)</label>
               <input id="contractAmount" type="number" value="1000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
             </div>
-
             <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Select Platform / Channel</label>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Select Platform</label>
               <select id="platformSelect" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 bg-white focus:ring-2 focus:ring-emerald-500 outline-none">
-                <option value="upwork">Upwork (10% flat service fee)</option>
+                <option value="upwork">Upwork (10% flat fee)</option>
                 <option value="fiverr">Fiverr (20% commission)</option>
-                <option value="stripe">Direct Client via Stripe (2.9% + $0.30)</option>
-                <option value="paypal">Direct Client via PayPal (3.49% + $0.49)</option>
-                <option value="custom">Custom Percentage</option>
+                <option value="stripe">Stripe (2.9% + $0.30)</option>
+                <option value="paypal">PayPal (3.49% + $0.49)</option>
               </select>
-            </div>
-
-            <div id="customRateContainer" class="hidden">
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Custom Fee Rate (%)</label>
-              <input id="customFeeRate" type="number" value="5" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
             </div>
           </div>
         </div>
 
-        <!-- Output Card -->
         <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
           <div>
             <span class="text-emerald-400 text-xs uppercase tracking-widest block font-bold">Your Take-Home Amount</span>
@@ -149,84 +140,179 @@
             </div>
             <div class="space-y-3 text-xs sm:text-sm">
               <div class="flex justify-between text-slate-300">
-                <span>Platform Cut / Fees:</span>
+                <span>Deducted Fees:</span>
                 <strong id="feeAmountResult" class="text-red-400">-$100.00</strong>
               </div>
               <div class="flex justify-between text-slate-300">
-                <span>Client Invoiced Total:</span>
-                <strong id="grossInvoicedResult" class="text-white">$1,000.00</strong>
-              </div>
-              <div class="flex justify-between text-slate-300">
-                <span>To receive the full amount, charge:</span>
+                <span>To receive the full amount, quote:</span>
                 <strong id="chargeToGetFullResult" class="text-emerald-300">$1,111.11</strong>
               </div>
             </div>
           </div>
-          <p class="text-[11px] text-slate-400 mt-6 pt-3 border-t border-slate-800">
-            * Tip: Always ask clients to cover processing fees or build them directly into your initial proposal.
-          </p>
         </div>
       </div>
     </section>
 
-    <!-- CONTENT LAYER: SEO Guide (Mandatory for AdSense) -->
-    <article class="bg-white p-8 rounded-2xl border border-slate-200 text-slate-700 space-y-6 leading-relaxed">
-      <h2 class="text-2xl font-bold text-slate-900">The Economics of Freelance Pricing</h2>
-      <p>
-        Navigating remote contracting requires a solid understanding of hidden fees and operational costs. Working independently offers flexibility, but failing to price in operational overhead or marketplace cuts will directly reduce your net take-home salary.
-      </p>
-
-      <h3 class="text-lg font-bold text-slate-800">1. Factoring in Marketplace Deductions</h3>
-      <p>
-        Freelance marketplaces like Upwork and Fiverr provide access to high-paying international clients, but charge between 10% and 20% in transaction fees. When scoping a project on these networks, use our Take-Home Calculator to reverse-engineer your quotes so that your net income meets your lifestyle targets.
-      </p>
-
-      <h3 class="text-lg font-bold text-slate-800">2. Why Billable Hours Are Not Total Hours</h3>
-      <p>
-        A standard full-time employee works 2,080 hours a year. As a freelancer, spending 40 hours a week on client deliverables is neither realistic nor sustainable. You must account for business development, client communications, bookkeeping, self-funded holidays, and potential periods between contracts. A healthy ratio is typically between 60% and 75% billable time.
-      </p>
-    </article>
-
-    <!-- MANDATORY LEGAL SECTIONS (AdSense Approval Requirement) -->
-    <section id="about" class="pt-8 border-t border-slate-200">
-      <h3 class="text-xl font-bold text-slate-900 mb-3">About FreelanceHub Tools</h3>
-      <p class="text-slate-600 text-sm leading-relaxed">
-        FreelanceHub Tools is a free online platform built to empower self-employed professionals, independent consultants, and remote contractors worldwide. Our lightweight, browser-based calculators eliminate guesswork from rate calculations, platform fee deductions, and contract scoping without storing personal financial information.
-      </p>
-    </section>
-
-    <section id="privacy" class="pt-4 border-t border-slate-200">
-      <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy & Terms</h3>
-      <div class="text-slate-600 text-xs sm:text-sm space-y-2 leading-relaxed">
-        <p>
-          <strong>Data Privacy:</strong> All calculations are executed directly within your web browser using client-side JavaScript. We do not transmit, log, or store your inputted financial data on any external servers.
+    <!-- TOOL 3: Instant Invoice Generator -->
+    <section id="invoice-generator" class="pt-8 border-t border-slate-200">
+      <div class="text-center mb-8 no-print">
+        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #3</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Instant Freelance Invoice Generator</h2>
+        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
+          Fill in your billable items and generate a clean, client-ready invoice for printing or PDF export.
         </p>
-        <p>
-          <strong>Advertising & Cookies:</strong> We may partner with third-party advertising vendors, including Google, which use cookies to serve relevant advertisements based on users' visits to this and other websites. Users may opt out of personalized advertising by visiting Google Ads Settings.
-        </p>
-        <p>
-          <strong>Disclaimer:</strong> The calculations provided are estimates meant solely for informational purposes. They do not constitute formal legal, tax, or financial advisory.
-        </p>
+      </div>
+
+      <!-- Generator Settings & Printable Sheet -->
+      <div class="space-y-6">
+        <!-- Input controls (hidden on print) -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm no-print space-y-6">
+          <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Invoice Information</h3>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Your Name / Business</label>
+              <input id="invSender" type="text" value="Alex Morgan Design" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Client Name / Company</label>
+              <input id="invClient" type="text" value="Acme Corporation" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Invoice Number</label>
+              <input id="invNumber" type="text" value="INV-2026-001" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Due Date</label>
+              <input id="invDueDate" type="text" value="Net 14 Days" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
+            </div>
+          </div>
+
+          <!-- Dynamic Line Items -->
+          <div class="pt-4 border-t border-slate-100">
+            <h4 class="text-sm font-bold text-slate-900 mb-3">Line Items</h4>
+            <div id="itemsContainer" class="space-y-3">
+              <div class="grid grid-cols-12 gap-2 item-row">
+                <input type="text" value="Web Design & UI Scoping" placeholder="Description" class="col-span-6 px-3 py-2 border border-slate-300 rounded-lg text-sm item-desc">
+                <input type="number" value="20" placeholder="Hours/Qty" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-qty">
+                <input type="number" value="75" placeholder="Rate ($)" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-rate">
+              </div>
+            </div>
+            <button id="addItemBtn" type="button" class="mt-3 text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+              + Add Another Item
+            </button>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+            <span class="text-xs text-slate-500">Your invoice preview updates automatically below.</span>
+            <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2">
+              <span>🖨️ Print / Save as PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- The Printable Invoice Card -->
+        <div id="printableInvoice" class="bg-white p-8 sm:p-12 rounded-2xl border border-slate-200 shadow-md">
+          <div class="flex justify-between items-start border-b border-slate-200 pb-8">
+            <div>
+              <h2 class="text-2xl font-black text-slate-900" id="previewSender">Alex Morgan Design</h2>
+              <p class="text-xs text-slate-500 mt-1">Professional Independent Contractor</p>
+            </div>
+            <div class="text-right">
+              <span class="text-2xl font-bold uppercase tracking-widest text-indigo-600">INVOICE</span>
+              <p class="text-xs text-slate-500 mt-1" id="previewNumber">#INV-2026-001</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 py-6 border-b border-slate-200 text-xs sm:text-sm">
+            <div>
+              <span class="text-slate-400 font-medium block">Billed To:</span>
+              <strong class="text-slate-900 text-base mt-1 block" id="previewClient">Acme Corporation</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 font-medium block">Terms / Due:</span>
+              <strong class="text-slate-900 text-base mt-1 block" id="previewDue">Net 14 Days</strong>
+            </div>
+          </div>
+
+          <!-- Invoice Table -->
+          <div class="py-6">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-400 uppercase text-[11px]">
+                  <th class="py-2">Description</th>
+                  <th class="py-2 text-center">Qty/Hours</th>
+                  <th class="py-2 text-right">Rate</th>
+                  <th class="py-2 text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="previewItemsBody" class="divide-y divide-slate-100 text-slate-700">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="border-t border-slate-200 pt-4 flex justify-end">
+            <div class="w-64 space-y-2 text-xs sm:text-sm">
+              <div class="flex justify-between font-extrabold text-base sm:text-lg text-slate-900 pt-2 border-t border-slate-200">
+                <span>Total Due:</span>
+                <span id="previewTotal" class="text-indigo-600">$1,500.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 pt-6 border-t border-slate-100 text-center text-xs text-slate-400">
+            Thank you for your business! Please remit payment via bank wire or payment link.
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="pt-4 border-t border-slate-200">
+    <!-- CONTENT LAYER: SEO Guide for AdSense -->
+    <article class="bg-white p-8 rounded-2xl border border-slate-200 text-slate-700 space-y-6 leading-relaxed no-print">
+      <h2 class="text-2xl font-bold text-slate-900">Best Practices for Invoicing International Clients</h2>
+      <p>
+        Getting paid on time is the backbone of running a profitable freelance practice. Unlike corporate accounting departments, independent operators need streamlined systems to generate compliant documentation quickly.
+      </p>
+      <h3 class="text-lg font-bold text-slate-800">Clear Payment Terms</h3>
+      <p>
+        Always specify payment expectations upfront. Common industry terms include "Due Upon Receipt" for urgent deliveries, or "Net 14" / "Net 30" for enterprise contracts. Ensure you include designated payment identifiers, your full legal name, and precise project deliverables to avoid processing delays.
+      </p>
+    </article>
+
+    <!-- MANDATORY LEGAL SECTIONS (AdSense Approval) -->
+    <section id="about" class="pt-8 border-t border-slate-200 no-print">
+      <h3 class="text-xl font-bold text-slate-900 mb-3">About FreelanceHub Tools</h3>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        FreelanceHub Tools provides free browser-based productivity calculators and utility documents for modern freelancers, remote consultants, and solopreneurs worldwide.
+      </p>
+    </section>
+
+    <section id="privacy" class="pt-4 border-t border-slate-200 no-print">
+      <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy & Terms</h3>
+      <div class="text-slate-600 text-xs sm:text-sm space-y-2 leading-relaxed">
+        <p><strong>Data Handling:</strong> All invoice generation and calculations occur 100% locally in your browser. No financial amounts, client details, or identity parameters are transmitted or stored on any server.</p>
+        <p><strong>Third-Party Advertising:</strong> This website may serve ads via Google AdSense and third-party ad networks using cookies to optimize relevant user experiences. You can adjust ad personalization through Google's settings.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="pt-4 border-t border-slate-200 no-print">
       <h3 class="text-xl font-bold text-slate-900 mb-3">Contact Us</h3>
       <p class="text-slate-600 text-sm leading-relaxed">
-        Have feedback, questions, or tool suggestions? Feel free to reach out to our team at: <span class="font-medium text-indigo-600">contact@freelancehub-tools.com</span>
+        Feedback or requests: <span class="font-medium text-indigo-600">contact@freelancehub-tools.com</span>
       </p>
     </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
     <p>© 2026 FreelanceHub Tools. Free financial calculators for independent contractors.</p>
   </footer>
 
-  <!-- Combined Interactive Logic -->
+  <!-- Scripts -->
   <script>
-    // --- Tool 1: Rate Calculator ---
+    // --- Tool 1: Rate Calc ---
     const netIncome = document.getElementById('netIncome');
     const expenses = document.getElementById('expenses');
     const taxRate = document.getElementById('taxRate');
@@ -249,33 +335,23 @@
       const ratio = parseFloat(billableRatio.value) || 70;
 
       ratioDisplay.textContent = ratio;
-
       const grossNeeded = net / (1 - (tax / 100));
       const totalRevenue = grossNeeded + exp;
       const totalBillable = Math.max(1, (weeks * hours) * (ratio / 100));
 
       const hourly = totalRevenue / totalBillable;
-      const daily = hourly * 8;
-
       hourlyRateResult.textContent = '$' + Math.round(hourly);
-      dailyRateResult.textContent = '$' + Math.round(daily);
+      dailyRateResult.textContent = '$' + Math.round(hourly * 8);
       totalRevenueResult.textContent = '$' + Math.round(totalRevenue).toLocaleString();
       billableHoursResult.textContent = Math.round(totalBillable).toLocaleString() + ' hrs';
     }
+    [netIncome, expenses, taxRate, weeksOff, hoursPerWeek, billableRatio].forEach(i => i.addEventListener('input', calculateRate));
 
-    [netIncome, expenses, taxRate, weeksOff, hoursPerWeek, billableRatio].forEach(input => {
-      input.addEventListener('input', calculateRate);
-    });
-
-    // --- Tool 2: Fee Calculator ---
+    // --- Tool 2: Fee Calc ---
     const contractAmount = document.getElementById('contractAmount');
     const platformSelect = document.getElementById('platformSelect');
-    const customRateContainer = document.getElementById('customRateContainer');
-    const customFeeRate = document.getElementById('customFeeRate');
-
     const netPayoutResult = document.getElementById('netPayoutResult');
     const feeAmountResult = document.getElementById('feeAmountResult');
-    const grossInvoicedResult = document.getElementById('grossInvoicedResult');
     const chargeToGetFullResult = document.getElementById('chargeToGetFullResult');
 
     function calculateFee() {
@@ -284,49 +360,84 @@
       let fee = 0;
       let neededToGetFull = gross;
 
-      if (platform === 'upwork') {
-        fee = gross * 0.10;
-        neededToGetFull = gross / 0.90;
-      } else if (platform === 'fiverr') {
-        fee = gross * 0.20;
-        neededToGetFull = gross / 0.80;
-      } else if (platform === 'stripe') {
-        fee = (gross * 0.029) + 0.30;
-        neededToGetFull = (gross + 0.30) / (1 - 0.029);
-      } else if (platform === 'paypal') {
-        fee = (gross * 0.0349) + 0.49;
-        neededToGetFull = (gross + 0.49) / (1 - 0.0349);
-      } else if (platform === 'custom') {
-        const customPct = (parseFloat(customFeeRate.value) || 0) / 100;
-        fee = gross * customPct;
-        neededToGetFull = customPct < 1 ? gross / (1 - customPct) : gross;
-      }
+      if (platform === 'upwork') { fee = gross * 0.10; neededToGetFull = gross / 0.90; }
+      else if (platform === 'fiverr') { fee = gross * 0.20; neededToGetFull = gross / 0.80; }
+      else if (platform === 'stripe') { fee = (gross * 0.029) + 0.30; neededToGetFull = (gross + 0.30) / (1 - 0.029); }
+      else if (platform === 'paypal') { fee = (gross * 0.0349) + 0.49; neededToGetFull = (gross + 0.49) / (1 - 0.0349); }
 
       fee = Math.min(fee, gross);
-      const net = Math.max(0, gross - fee);
+      netPayoutResult.textContent = '$' + Math.max(0, gross - fee).toFixed(2);
+      feeAmountResult.textContent = '-$' + fee.toFixed(2);
+      chargeToGetFullResult.textContent = '$' + neededToGetFull.toFixed(2);
+    }
+    contractAmount.addEventListener('input', calculateFee);
+    platformSelect.addEventListener('change', calculateFee);
 
-      netPayoutResult.textContent = '$' + net.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      feeAmountResult.textContent = '-$' + fee.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      grossInvoicedResult.textContent = '$' + gross.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      chargeToGetFullResult.textContent = '$' + neededToGetFull.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    // --- Tool 3: Invoice Generator ---
+    const invSender = document.getElementById('invSender');
+    const invClient = document.getElementById('invClient');
+    const invNumber = document.getElementById('invNumber');
+    const invDueDate = document.getElementById('invDueDate');
+    const itemsContainer = document.getElementById('itemsContainer');
+    const addItemBtn = document.getElementById('addItemBtn');
+
+    const previewSender = document.getElementById('previewSender');
+    const previewClient = document.getElementById('previewClient');
+    const previewNumber = document.getElementById('previewNumber');
+    const previewDue = document.getElementById('previewDue');
+    const previewItemsBody = document.getElementById('previewItemsBody');
+    const previewTotal = document.getElementById('previewTotal');
+
+    function updateInvoicePreview() {
+      previewSender.textContent = invSender.value || 'Your Name';
+      previewClient.textContent = invClient.value || 'Client Name';
+      previewNumber.textContent = '#' + (invNumber.value || 'INV-001');
+      previewDue.textContent = invDueDate.value || 'Due on Receipt';
+
+      const rows = document.querySelectorAll('.item-row');
+      previewItemsBody.innerHTML = '';
+      let grandTotal = 0;
+
+      rows.forEach(row => {
+        const desc = row.querySelector('.item-desc').value || 'Service item';
+        const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+        const rate = parseFloat(row.querySelector('.item-rate').value) || 0;
+        const lineTotal = qty * rate;
+        grandTotal += lineTotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="py-2">${desc}</td>
+          <td class="py-2 text-center">${qty}</td>
+          <td class="py-2 text-right">$${rate.toFixed(2)}</td>
+          <td class="py-2 text-right font-medium">$${lineTotal.toFixed(2)}</td>
+        `;
+        previewItemsBody.appendChild(tr);
+      });
+
+      previewTotal.textContent = '$' + grandTotal.toFixed(2);
     }
 
-    platformSelect.addEventListener('change', () => {
-      if (platformSelect.value === 'custom') {
-        customRateContainer.classList.remove('hidden');
-      } else {
-        customRateContainer.classList.add('hidden');
-      }
-      calculateFee();
+    addItemBtn.addEventListener('click', () => {
+      const div = document.createElement('div');
+      div.className = 'grid grid-cols-12 gap-2 item-row';
+      div.innerHTML = `
+        <input type="text" placeholder="Description" value="Consulting Session" class="col-span-6 px-3 py-2 border border-slate-300 rounded-lg text-sm item-desc">
+        <input type="number" placeholder="Hours" value="5" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-qty">
+        <input type="number" placeholder="Rate" value="75" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-rate">
+      `;
+      itemsContainer.appendChild(div);
+      div.querySelectorAll('input').forEach(i => i.addEventListener('input', updateInvoicePreview));
+      updateInvoicePreview();
     });
 
-    [contractAmount, customFeeRate].forEach(input => {
-      input.addEventListener('input', calculateFee);
-    });
+    [invSender, invClient, invNumber, invDueDate].forEach(i => i.addEventListener('input', updateInvoicePreview));
+    document.querySelectorAll('.item-row input').forEach(i => i.addEventListener('input', updateInvoicePreview));
 
-    // Run calculations on initial load
+    // Initialize all
     calculateRate();
     calculateFee();
+    updateInvoicePreview();
   </script>
 </body>
 </html>
