@@ -2,442 +2,344 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreelanceHub | Essential Tools for Remote Professionals</title>
-  <meta name="description" content="Free calculators and invoice tools for freelancers. Estimate hourly rates, calculate marketplace fees, and generate clean professional invoices.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PetCareCalc | Daily Feeding, Hydration & Age Tools for Dogs & Cats</title>
+  <meta name="description" content="Free scientific pet health calculators. Calculate precise daily kibble portions, water intake requirements, and accurate biological age for dogs and cats.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @media print {
-      body * { visibility: hidden; }
-      #printableInvoice, #printableInvoice * { visibility: visible; }
-      #printableInvoice { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20px; border: none; box-shadow: none; }
-      .no-print { display: none !important; }
-    }
-  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-amber-50/40 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-200">
 
-  <!-- Header -->
-  <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50 shadow-sm no-print">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#" class="text-xl font-extrabold text-indigo-600 tracking-tight flex items-center gap-2">
-        <span>⚡ FreelanceHub</span>
+  <!-- Mobile-Friendly Sticky Header -->
+  <header class="bg-white border-b border-amber-100 py-3 px-4 sm:px-6 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <a href="#" class="text-lg sm:text-xl font-black text-emerald-600 tracking-tight flex items-center gap-2">
+        <span>🐾 PetCareCalc</span>
       </a>
-      <nav class="space-x-3 sm:space-x-6 text-xs sm:text-sm font-medium text-slate-600">
-        <a href="#rate-calculator" class="hover:text-indigo-600 transition">Rates</a>
-        <a href="#fee-calculator" class="hover:text-indigo-600 transition">Fees</a>
-        <a href="#invoice-generator" class="hover:text-indigo-600 transition">Invoice</a>
-        <a href="#about" class="hover:text-indigo-600 transition">About</a>
+      <nav class="flex items-center space-x-2 sm:space-x-4 text-xs font-semibold text-slate-600">
+        <a href="#feeding" class="px-2 py-1 rounded-md hover:bg-emerald-50 hover:text-emerald-700 transition">Feeding</a>
+        <a href="#hydration" class="px-2 py-1 rounded-md hover:bg-emerald-50 hover:text-emerald-700 transition">Water</a>
+        <a href="#age" class="px-2 py-1 rounded-md hover:bg-emerald-50 hover:text-emerald-700 transition">Age</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full space-y-20">
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-6 sm:py-10 w-full space-y-12 sm:space-y-16">
 
-    <!-- TOOL 1: Hourly Rate Calculator -->
-    <section id="rate-calculator" class="pt-4 no-print">
-      <div class="text-center mb-8">
-        <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #1</span>
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Freelance Hourly Rate Calculator</h1>
-        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Determine your sustainable rate accounting for taxes, expenses, and actual billable hours.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Annual Financial Targets</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Target Net Income ($/yr)</label>
-              <input id="netIncome" type="number" value="60000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Annual Expenses ($/yr)</label>
-              <input id="expenses" type="number" value="12000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Estimated Tax (%)</label>
-              <input id="taxRate" type="number" value="25" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Weeks Off / Vacation</label>
-              <input id="weeksOff" type="number" value="4" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Total Hours / Week</label>
-              <input id="hoursPerWeek" type="number" value="40" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Billable Ratio (<span id="ratioDisplay">70</span>%)</label>
-              <input id="billableRatio" type="range" min="30" max="95" value="70" class="w-full accent-indigo-600 mt-2">
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
-          <div>
-            <span class="text-indigo-400 text-xs uppercase tracking-widest block font-bold">Recommended Minimum</span>
-            <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-4 mb-4">
-              <span id="hourlyRateResult" class="text-4xl sm:text-5xl font-extrabold text-indigo-400">$68</span>
-              <span class="text-slate-400">/ hr</span>
-            </div>
-            <div class="space-y-3 text-xs sm:text-sm">
-              <div class="flex justify-between text-slate-300">
-                <span>Standard Day Rate (8h):</span>
-                <strong id="dailyRateResult" class="text-white">$544</strong>
-              </div>
-              <div class="flex justify-between text-slate-300">
-                <span>Gross Target Revenue:</span>
-                <strong id="totalRevenueResult" class="text-white">$92,000</strong>
-              </div>
-              <div class="flex justify-between text-slate-300">
-                <span>Annual Billable Hours:</span>
-                <strong id="billableHoursResult" class="text-white">1,344 hrs</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOOL 2: Platform Fee Calculator -->
-    <section id="fee-calculator" class="pt-8 border-t border-slate-200 no-print">
-      <div class="text-center mb-8">
-        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #2</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Platform Fee & Net Payout Calculator</h2>
-        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Find out exactly how much you take home after marketplace commissions and payment deductions.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Contract Details</h3>
-          <div class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Invoice / Contract Amount ($)</label>
-              <input id="contractAmount" type="number" value="1000" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Select Platform</label>
-              <select id="platformSelect" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 bg-white focus:ring-2 focus:ring-emerald-500 outline-none">
-                <option value="upwork">Upwork (10% flat fee)</option>
-                <option value="fiverr">Fiverr (20% commission)</option>
-                <option value="stripe">Stripe (2.9% + $0.30)</option>
-                <option value="paypal">PayPal (3.49% + $0.49)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-md flex flex-col justify-between">
-          <div>
-            <span class="text-emerald-400 text-xs uppercase tracking-widest block font-bold">Your Take-Home Amount</span>
-            <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-4 mb-4">
-              <span id="netPayoutResult" class="text-4xl sm:text-5xl font-extrabold text-emerald-400">$900.00</span>
-            </div>
-            <div class="space-y-3 text-xs sm:text-sm">
-              <div class="flex justify-between text-slate-300">
-                <span>Deducted Fees:</span>
-                <strong id="feeAmountResult" class="text-red-400">-$100.00</strong>
-              </div>
-              <div class="flex justify-between text-slate-300">
-                <span>To receive the full amount, quote:</span>
-                <strong id="chargeToGetFullResult" class="text-emerald-300">$1,111.11</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOOL 3: Instant Invoice Generator -->
-    <section id="invoice-generator" class="pt-8 border-t border-slate-200">
-      <div class="text-center mb-8 no-print">
-        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Tool #3</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Instant Freelance Invoice Generator</h2>
-        <p class="mt-2 text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Fill in your billable items and generate a clean, client-ready invoice for printing or PDF export.
-        </p>
-      </div>
-
-      <!-- Generator Settings & Printable Sheet -->
-      <div class="space-y-6">
-        <!-- Input controls (hidden on print) -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm no-print space-y-6">
-          <h3 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">Invoice Information</h3>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Your Name / Business</label>
-              <input id="invSender" type="text" value="Alex Morgan Design" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Client Name / Company</label>
-              <input id="invClient" type="text" value="Acme Corporation" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Invoice Number</label>
-              <input id="invNumber" type="text" value="INV-2026-001" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Due Date</label>
-              <input id="invDueDate" type="text" value="Net 14 Days" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-slate-900 outline-none">
-            </div>
-          </div>
-
-          <!-- Dynamic Line Items -->
-          <div class="pt-4 border-t border-slate-100">
-            <h4 class="text-sm font-bold text-slate-900 mb-3">Line Items</h4>
-            <div id="itemsContainer" class="space-y-3">
-              <div class="grid grid-cols-12 gap-2 item-row">
-                <input type="text" value="Web Design & UI Scoping" placeholder="Description" class="col-span-6 px-3 py-2 border border-slate-300 rounded-lg text-sm item-desc">
-                <input type="number" value="20" placeholder="Hours/Qty" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-qty">
-                <input type="number" value="75" placeholder="Rate ($)" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-rate">
-              </div>
-            </div>
-            <button id="addItemBtn" type="button" class="mt-3 text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
-              + Add Another Item
-            </button>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
-            <span class="text-xs text-slate-500">Your invoice preview updates automatically below.</span>
-            <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow transition flex items-center gap-2">
-              <span>🖨️ Print / Save as PDF</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- The Printable Invoice Card -->
-        <div id="printableInvoice" class="bg-white p-8 sm:p-12 rounded-2xl border border-slate-200 shadow-md">
-          <div class="flex justify-between items-start border-b border-slate-200 pb-8">
-            <div>
-              <h2 class="text-2xl font-black text-slate-900" id="previewSender">Alex Morgan Design</h2>
-              <p class="text-xs text-slate-500 mt-1">Professional Independent Contractor</p>
-            </div>
-            <div class="text-right">
-              <span class="text-2xl font-bold uppercase tracking-widest text-indigo-600">INVOICE</span>
-              <p class="text-xs text-slate-500 mt-1" id="previewNumber">#INV-2026-001</p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-6 py-6 border-b border-slate-200 text-xs sm:text-sm">
-            <div>
-              <span class="text-slate-400 font-medium block">Billed To:</span>
-              <strong class="text-slate-900 text-base mt-1 block" id="previewClient">Acme Corporation</strong>
-            </div>
-            <div class="text-right">
-              <span class="text-slate-400 font-medium block">Terms / Due:</span>
-              <strong class="text-slate-900 text-base mt-1 block" id="previewDue">Net 14 Days</strong>
-            </div>
-          </div>
-
-          <!-- Invoice Table -->
-          <div class="py-6">
-            <table class="w-full text-left text-xs sm:text-sm">
-              <thead>
-                <tr class="border-b border-slate-200 text-slate-400 uppercase text-[11px]">
-                  <th class="py-2">Description</th>
-                  <th class="py-2 text-center">Qty/Hours</th>
-                  <th class="py-2 text-right">Rate</th>
-                  <th class="py-2 text-right">Amount</th>
-                </tr>
-              </thead>
-              <tbody id="previewItemsBody" class="divide-y divide-slate-100 text-slate-700">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
-
-          <div class="border-t border-slate-200 pt-4 flex justify-end">
-            <div class="w-64 space-y-2 text-xs sm:text-sm">
-              <div class="flex justify-between font-extrabold text-base sm:text-lg text-slate-900 pt-2 border-t border-slate-200">
-                <span>Total Due:</span>
-                <span id="previewTotal" class="text-indigo-600">$1,500.00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-12 pt-6 border-t border-slate-100 text-center text-xs text-slate-400">
-            Thank you for your business! Please remit payment via bank wire or payment link.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENT LAYER: SEO Guide for AdSense -->
-    <article class="bg-white p-8 rounded-2xl border border-slate-200 text-slate-700 space-y-6 leading-relaxed no-print">
-      <h2 class="text-2xl font-bold text-slate-900">Best Practices for Invoicing International Clients</h2>
-      <p>
-        Getting paid on time is the backbone of running a profitable freelance practice. Unlike corporate accounting departments, independent operators need streamlined systems to generate compliant documentation quickly.
+    <!-- Hero Introduction -->
+    <div class="text-center space-y-2">
+      <span class="inline-block bg-emerald-100 text-emerald-800 text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Veterinary Formula Based</span>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Smart Daily Pet Care Calculators</h1>
+      <p class="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
+        Avoid guesswork with precise daily food portions, hydration needs, and modern biological age estimations.
       </p>
-      <h3 class="text-lg font-bold text-slate-800">Clear Payment Terms</h3>
+    </div>
+
+    <!-- TOOL 1: Daily Kibble / Food Portions -->
+    <section id="feeding" class="bg-white p-5 sm:p-8 rounded-2xl border border-amber-100 shadow-sm space-y-6">
+      <div class="border-b border-slate-100 pb-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase text-emerald-600 tracking-wider">Tool #1</span>
+          <span class="text-xs text-slate-400">Resting Energy Requirement (RER)</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Daily Kibble & Calorie Calculator</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Tailored portions based on species, weight, and neuter status.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="space-y-4">
+          <!-- Pet Species -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pet Type</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" id="btnDog" class="species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 transition text-center">🐶 Dog</button>
+              <button type="button" id="btnCat" class="species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-slate-300 transition text-center">🐱 Cat</button>
+            </div>
+          </div>
+
+          <!-- Weight -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-xs font-bold text-slate-700 uppercase">Weight</label>
+              <div class="text-xs text-slate-500 flex gap-2">
+                <label class="cursor-pointer"><input type="radio" name="weightUnit" value="kg" checked class="accent-emerald-600"> kg</label>
+                <label class="cursor-pointer"><input type="radio" name="weightUnit" value="lbs" class="accent-emerald-600"> lbs</label>
+              </div>
+            </div>
+            <input id="petWeight" type="number" step="0.1" value="5" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 font-semibold focus:ring-2 focus:ring-emerald-500 outline-none text-base">
+          </div>
+
+          <!-- Life Stage & Neuter Status -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Life Stage & Activity</label>
+            <select id="lifeStage" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 bg-white font-medium focus:ring-2 focus:ring-emerald-500 outline-none text-xs sm:text-sm">
+              <option value="neutered_adult">Neutered Adult (Normal Activity)</option>
+              <option value="intact_adult">Intact Adult (Higher Energy)</option>
+              <option value="low_activity">Senior / Low Activity / Weight Loss</option>
+              <option value="puppy_kitten">Puppy / Kitten (Active Growth)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Feeding Output Display -->
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md flex flex-col justify-between space-y-4">
+          <div>
+            <span class="text-emerald-400 text-xs uppercase tracking-widest font-bold block">Recommended Daily Intake</span>
+            <div class="mt-2 flex items-baseline gap-2 border-b border-slate-800 pb-3">
+              <span id="kibbleResult" class="text-3xl sm:text-4xl font-extrabold text-emerald-400">110</span>
+              <span class="text-slate-300 text-sm font-medium">grams / day</span>
+            </div>
+            <div class="mt-4 space-y-2 text-xs sm:text-sm text-slate-300">
+              <div class="flex justify-between">
+                <span>Daily Energy Needs:</span>
+                <strong id="caloriesResult" class="text-white">380 kcal</strong>
+              </div>
+              <div class="flex justify-between">
+                <span>Per Meal (2 meals/day):</span>
+                <strong id="perMealResult" class="text-emerald-300">55 grams</strong>
+              </div>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400 pt-2 border-t border-slate-800">
+            * Calibrated for standard premium dry food (~360 kcal/100g).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 2: Daily Water Intake -->
+    <section id="hydration" class="bg-white p-5 sm:p-8 rounded-2xl border border-amber-100 shadow-sm space-y-6">
+      <div class="border-b border-slate-100 pb-4">
+        <span class="text-xs font-bold uppercase text-sky-600 tracking-wider">Tool #2</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Pet Daily Hydration Estimator</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Ensure adequate hydration to support kidney and urinary tract health.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Primary Diet Type</label>
+            <select id="dietType" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 bg-white font-medium focus:ring-2 focus:ring-sky-500 outline-none text-xs sm:text-sm">
+              <option value="dry">Dry Kibble Only (Requires More Drinking)</option>
+              <option value="mixed">Mixed (Dry Kibble + Wet Canned)</option>
+              <option value="wet">Wet Canned / Fresh Food Only</option>
+            </select>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Pets consuming strictly dry food must drink up to 3x more fresh water than pets on canned diets.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md space-y-3">
+          <span class="text-sky-400 text-xs uppercase tracking-widest font-bold block">Water Bowl Target</span>
+          <div class="flex items-baseline gap-2 border-b border-slate-800 pb-3">
+            <span id="waterResult" class="text-3xl sm:text-4xl font-extrabold text-sky-400">250</span>
+            <span class="text-slate-300 text-sm font-medium">ml / day</span>
+          </div>
+          <div class="flex justify-between text-xs sm:text-sm text-slate-300">
+            <span>Approximate Equivalent:</span>
+            <strong id="waterCupsResult" class="text-white">~1.0 standard cup</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 3: Biological Age Converter -->
+    <section id="age" class="bg-white p-5 sm:p-8 rounded-2xl border border-amber-100 shadow-sm space-y-6">
+      <div class="border-b border-slate-100 pb-4">
+        <span class="text-xs font-bold uppercase text-amber-600 tracking-wider">Tool #3</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Modern Biological Age Calculator</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Replaces the outdated 7-year rule with modern veterinary curves.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Calendar Age (Years)</label>
+            <input id="calendarAge" type="number" min="0.5" max="25" step="0.5" value="3" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 font-semibold focus:ring-2 focus:ring-amber-500 outline-none text-base">
+          </div>
+          <div id="dogSizeWrapper">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Dog Frame / Breed Size</label>
+            <select id="dogSize" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 bg-white font-medium focus:ring-2 focus:ring-amber-500 outline-none text-xs sm:text-sm">
+              <option value="small">Small Breed (&lt; 10 kg / 22 lbs)</option>
+              <option value="medium" selected>Medium Breed (10 - 25 kg)</option>
+              <option value="large">Large Breed (&gt; 25 kg / 55 lbs)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md space-y-3">
+          <span class="text-amber-400 text-xs uppercase tracking-widest font-bold block">Human Biological Age</span>
+          <div class="flex items-baseline gap-2 border-b border-slate-800 pb-3">
+            <span id="humanAgeResult" class="text-3xl sm:text-4xl font-extrabold text-amber-400">28</span>
+            <span class="text-slate-300 text-sm font-medium">years old</span>
+          </div>
+          <div class="flex justify-between text-xs sm:text-sm text-slate-300">
+            <span>Life Stage Phase:</span>
+            <strong id="stagePhaseResult" class="text-amber-300 font-semibold">Young Adult</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Content & Guidelines (AdSense Requirement) -->
+    <article class="bg-white p-6 sm:p-8 rounded-2xl border border-amber-100 text-slate-700 space-y-4 text-xs sm:text-sm leading-relaxed">
+      <h3 class="text-lg sm:text-xl font-bold text-slate-900">Understanding Pet Energy Requirements (RER & DER)</h3>
       <p>
-        Always specify payment expectations upfront. Common industry terms include "Due Upon Receipt" for urgent deliveries, or "Net 14" / "Net 30" for enterprise contracts. Ensure you include designated payment identifiers, your full legal name, and precise project deliverables to avoid processing delays.
+        Veterinary nutrition utilizes Resting Energy Requirement (RER) calculated as <code>70 × (Weight in kg)^0.75</code>. From this baseline, Daily Energy Requirement (DER) multipliers account for growth, reproductive status, and activity levels. Feeding exact caloric allotments prevents feline hepatic lipidosis and canine obesity-related osteoarthritis.
+      </p>
+      <h4 class="text-sm font-bold text-slate-800 pt-2">Why Hydration Awareness Matters</h4>
+      <p>
+        Domestic felines have a biologically low thirst drive inherited from desert ancestors. When fed exclusively dry kibble containing less than 10% moisture, proactive hydration monitoring is crucial to deter feline lower urinary tract diseases (FLUTD).
       </p>
     </article>
 
-    <!-- MANDATORY LEGAL SECTIONS (AdSense Approval) -->
-    <section id="about" class="pt-8 border-t border-slate-200 no-print">
-      <h3 class="text-xl font-bold text-slate-900 mb-3">About FreelanceHub Tools</h3>
-      <p class="text-slate-600 text-sm leading-relaxed">
-        FreelanceHub Tools provides free browser-based productivity calculators and utility documents for modern freelancers, remote consultants, and solopreneurs worldwide.
-      </p>
-    </section>
-
-    <section id="privacy" class="pt-4 border-t border-slate-200 no-print">
-      <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy Policy & Terms</h3>
-      <div class="text-slate-600 text-xs sm:text-sm space-y-2 leading-relaxed">
-        <p><strong>Data Handling:</strong> All invoice generation and calculations occur 100% locally in your browser. No financial amounts, client details, or identity parameters are transmitted or stored on any server.</p>
-        <p><strong>Third-Party Advertising:</strong> This website may serve ads via Google AdSense and third-party ad networks using cookies to optimize relevant user experiences. You can adjust ad personalization through Google's settings.</p>
+    <!-- Legal / AdSense Required Pages -->
+    <section class="pt-6 border-t border-amber-100 text-xs text-slate-500 space-y-4">
+      <div>
+        <h4 class="font-bold text-slate-800 text-sm mb-1">About PetCareCalc</h4>
+        <p>PetCareCalc is an independent online utility hub offering science-backed reference calculators for domestic companion animals.</p>
       </div>
-    </section>
-
-    <section id="contact" class="pt-4 border-t border-slate-200 no-print">
-      <h3 class="text-xl font-bold text-slate-900 mb-3">Contact Us</h3>
-      <p class="text-slate-600 text-sm leading-relaxed">
-        Feedback or requests: <span class="font-medium text-indigo-600">contact@freelancehub-tools.com</span>
-      </p>
+      <div>
+        <h4 class="font-bold text-slate-800 text-sm mb-1">Veterinary Advisory Disclaimer</h4>
+        <p>The tools provided on this website are for nutritional reference and educational estimation purposes only. They do not constitute veterinary medical diagnosis or therapeutic prescriptions. Always consult a licensed veterinarian for clinical guidance.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-800 text-sm mb-1">Privacy Policy</h4>
+        <p>All inputs are calculated locally within your web browser. We do not store or transmit pet metrics or user data. This site may display non-intrusive contextual ads via Google AdSense.</p>
+      </div>
     </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
-    <p>© 2026 FreelanceHub Tools. Free financial calculators for independent contractors.</p>
+  <footer class="bg-white border-t border-amber-100 py-6 text-center text-xs text-slate-500 mt-8">
+    <p>© 2026 PetCareCalc. Science-backed companion animal utilities.</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Interactive Logic -->
   <script>
-    // --- Tool 1: Rate Calc ---
-    const netIncome = document.getElementById('netIncome');
-    const expenses = document.getElementById('expenses');
-    const taxRate = document.getElementById('taxRate');
-    const weeksOff = document.getElementById('weeksOff');
-    const hoursPerWeek = document.getElementById('hoursPerWeek');
-    const billableRatio = document.getElementById('billableRatio');
-    const ratioDisplay = document.getElementById('ratioDisplay');
+    let activeSpecies = 'dog';
 
-    const hourlyRateResult = document.getElementById('hourlyRateResult');
-    const dailyRateResult = document.getElementById('dailyRateResult');
-    const totalRevenueResult = document.getElementById('totalRevenueResult');
-    const billableHoursResult = document.getElementById('billableHoursResult');
+    const btnDog = document.getElementById('btnDog');
+    const btnCat = document.getElementById('btnCat');
+    const petWeight = document.getElementById('petWeight');
+    const lifeStage = document.getElementById('lifeStage');
+    const dogSizeWrapper = document.getElementById('dogSizeWrapper');
+    const dogSize = document.getElementById('dogSize');
+    const calendarAge = document.getElementById('calendarAge');
+    const dietType = document.getElementById('dietType');
 
-    function calculateRate() {
-      const net = parseFloat(netIncome.value) || 0;
-      const exp = parseFloat(expenses.value) || 0;
-      const tax = Math.min(parseFloat(taxRate.value) || 0, 90);
-      const weeks = Math.max(0, 52 - (parseFloat(weeksOff.value) || 0));
-      const hours = parseFloat(hoursPerWeek.value) || 0;
-      const ratio = parseFloat(billableRatio.value) || 70;
+    const kibbleResult = document.getElementById('kibbleResult');
+    const caloriesResult = document.getElementById('caloriesResult');
+    const perMealResult = document.getElementById('perMealResult');
+    const waterResult = document.getElementById('waterResult');
+    const waterCupsResult = document.getElementById('waterCupsResult');
+    const humanAgeResult = document.getElementById('humanAgeResult');
+    const stagePhaseResult = document.getElementById('stagePhaseResult');
 
-      ratioDisplay.textContent = ratio;
-      const grossNeeded = net / (1 - (tax / 100));
-      const totalRevenue = grossNeeded + exp;
-      const totalBillable = Math.max(1, (weeks * hours) * (ratio / 100));
-
-      const hourly = totalRevenue / totalBillable;
-      hourlyRateResult.textContent = '$' + Math.round(hourly);
-      dailyRateResult.textContent = '$' + Math.round(hourly * 8);
-      totalRevenueResult.textContent = '$' + Math.round(totalRevenue).toLocaleString();
-      billableHoursResult.textContent = Math.round(totalBillable).toLocaleString() + ' hrs';
-    }
-    [netIncome, expenses, taxRate, weeksOff, hoursPerWeek, billableRatio].forEach(i => i.addEventListener('input', calculateRate));
-
-    // --- Tool 2: Fee Calc ---
-    const contractAmount = document.getElementById('contractAmount');
-    const platformSelect = document.getElementById('platformSelect');
-    const netPayoutResult = document.getElementById('netPayoutResult');
-    const feeAmountResult = document.getElementById('feeAmountResult');
-    const chargeToGetFullResult = document.getElementById('chargeToGetFullResult');
-
-    function calculateFee() {
-      const gross = parseFloat(contractAmount.value) || 0;
-      const platform = platformSelect.value;
-      let fee = 0;
-      let neededToGetFull = gross;
-
-      if (platform === 'upwork') { fee = gross * 0.10; neededToGetFull = gross / 0.90; }
-      else if (platform === 'fiverr') { fee = gross * 0.20; neededToGetFull = gross / 0.80; }
-      else if (platform === 'stripe') { fee = (gross * 0.029) + 0.30; neededToGetFull = (gross + 0.30) / (1 - 0.029); }
-      else if (platform === 'paypal') { fee = (gross * 0.0349) + 0.49; neededToGetFull = (gross + 0.49) / (1 - 0.0349); }
-
-      fee = Math.min(fee, gross);
-      netPayoutResult.textContent = '$' + Math.max(0, gross - fee).toFixed(2);
-      feeAmountResult.textContent = '-$' + fee.toFixed(2);
-      chargeToGetFullResult.textContent = '$' + neededToGetFull.toFixed(2);
-    }
-    contractAmount.addEventListener('input', calculateFee);
-    platformSelect.addEventListener('change', calculateFee);
-
-    // --- Tool 3: Invoice Generator ---
-    const invSender = document.getElementById('invSender');
-    const invClient = document.getElementById('invClient');
-    const invNumber = document.getElementById('invNumber');
-    const invDueDate = document.getElementById('invDueDate');
-    const itemsContainer = document.getElementById('itemsContainer');
-    const addItemBtn = document.getElementById('addItemBtn');
-
-    const previewSender = document.getElementById('previewSender');
-    const previewClient = document.getElementById('previewClient');
-    const previewNumber = document.getElementById('previewNumber');
-    const previewDue = document.getElementById('previewDue');
-    const previewItemsBody = document.getElementById('previewItemsBody');
-    const previewTotal = document.getElementById('previewTotal');
-
-    function updateInvoicePreview() {
-      previewSender.textContent = invSender.value || 'Your Name';
-      previewClient.textContent = invClient.value || 'Client Name';
-      previewNumber.textContent = '#' + (invNumber.value || 'INV-001');
-      previewDue.textContent = invDueDate.value || 'Due on Receipt';
-
-      const rows = document.querySelectorAll('.item-row');
-      previewItemsBody.innerHTML = '';
-      let grandTotal = 0;
-
-      rows.forEach(row => {
-        const desc = row.querySelector('.item-desc').value || 'Service item';
-        const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
-        const rate = parseFloat(row.querySelector('.item-rate').value) || 0;
-        const lineTotal = qty * rate;
-        grandTotal += lineTotal;
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="py-2">${desc}</td>
-          <td class="py-2 text-center">${qty}</td>
-          <td class="py-2 text-right">$${rate.toFixed(2)}</td>
-          <td class="py-2 text-right font-medium">$${lineTotal.toFixed(2)}</td>
-        `;
-        previewItemsBody.appendChild(tr);
-      });
-
-      previewTotal.textContent = '$' + grandTotal.toFixed(2);
+    function setSpecies(species) {
+      activeSpecies = species;
+      if (species === 'dog') {
+        btnDog.className = 'species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 transition text-center';
+        btnCat.className = 'species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-slate-300 transition text-center';
+        dogSizeWrapper.classList.remove('hidden');
+      } else {
+        btnCat.className = 'species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 transition text-center';
+        btnDog.className = 'species-btn py-2.5 px-4 text-xs sm:text-sm font-bold rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-slate-300 transition text-center';
+        dogSizeWrapper.classList.add('hidden');
+      }
+      calculateAll();
     }
 
-    addItemBtn.addEventListener('click', () => {
-      const div = document.createElement('div');
-      div.className = 'grid grid-cols-12 gap-2 item-row';
-      div.innerHTML = `
-        <input type="text" placeholder="Description" value="Consulting Session" class="col-span-6 px-3 py-2 border border-slate-300 rounded-lg text-sm item-desc">
-        <input type="number" placeholder="Hours" value="5" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-qty">
-        <input type="number" placeholder="Rate" value="75" class="col-span-3 px-3 py-2 border border-slate-300 rounded-lg text-sm item-rate">
-      `;
-      itemsContainer.appendChild(div);
-      div.querySelectorAll('input').forEach(i => i.addEventListener('input', updateInvoicePreview));
-      updateInvoicePreview();
+    btnDog.addEventListener('click', () => setSpecies('dog'));
+    btnCat.addEventListener('click', () => setSpecies('cat'));
+
+    function calculateAll() {
+      // 1. Feeding / Kibble
+      const unit = document.querySelector('input[name="weightUnit"]:checked').value;
+      let rawWeight = parseFloat(petWeight.value) || 1;
+      let weightKg = unit === 'lbs' ? rawWeight * 0.453592 : rawWeight;
+      weightKg = Math.max(0.5, Math.min(weightKg, 90));
+
+      // Scientific RER Formula: 70 * (weight in kg)^0.75
+      const rer = 70 * Math.pow(weightKg, 0.75);
+
+      let factor = 1.6;
+      const stage = lifeStage.value;
+      if (activeSpecies === 'dog') {
+        if (stage === 'neutered_adult') factor = 1.6;
+        else if (stage === 'intact_adult') factor = 1.8;
+        else if (stage === 'low_activity') factor = 1.2;
+        else if (stage === 'puppy_kitten') factor = 2.5;
+      } else {
+        if (stage === 'neutered_adult') factor = 1.2;
+        else if (stage === 'intact_adult') factor = 1.4;
+        else if (stage === 'low_activity') factor = 1.0;
+        else if (stage === 'puppy_kitten') factor = 2.0;
+      }
+
+      const totalKcal = Math.round(rer * factor);
+      // Average dry kibble: ~360 kcal per 100g
+      const gramsKibble = Math.round((totalKcal / 360) * 100);
+
+      kibbleResult.textContent = gramsKibble;
+      caloriesResult.textContent = totalKcal + ' kcal';
+      perMealResult.textContent = Math.round(gramsKibble / 2) + ' grams';
+
+      // 2. Hydration
+      let baseWaterMl = weightKg * (activeSpecies === 'dog' ? 60 : 50);
+      const diet = dietType.value;
+      if (diet === 'dry') baseWaterMl *= 1.15;
+      else if (diet === 'wet') baseWaterMl *= 0.4;
+      else baseWaterMl *= 0.8;
+
+      const roundedWater = Math.round(baseWaterMl);
+      waterResult.textContent = roundedWater;
+      const cups = (roundedWater / 240).toFixed(1);
+      waterCupsResult.textContent = `~${cups} standard cup${cups == 1 ? '' : 's'}`;
+
+      // 3. Biological Age
+      const years = parseFloat(calendarAge.value) || 1;
+      let bioAge = 0;
+      let phase = 'Adult';
+
+      if (activeSpecies === 'cat') {
+        if (years <= 1) bioAge = 15;
+        else if (years <= 2) bioAge = 24;
+        else bioAge = 24 + (years - 2) * 4;
+      } else {
+        const size = dogSize.value;
+        if (years <= 1) bioAge = 15;
+        else if (years <= 2) bioAge = 24;
+        else {
+          const mult = size === 'small' ? 4 : (size === 'medium' ? 5 : 6.5);
+          bioAge = 24 + (years - 2) * mult;
+        }
+      }
+
+      bioAge = Math.round(bioAge);
+      humanAgeResult.textContent = bioAge;
+
+      if (bioAge < 20) phase = 'Junior / Puppy';
+      else if (bioAge < 50) phase = 'Prime Adult';
+      else if (bioAge < 70) phase = 'Mature Adult';
+      else phase = 'Senior Pet';
+
+      stagePhaseResult.textContent = phase;
+    }
+
+    [petWeight, lifeStage, dogSize, calendarAge, dietType].forEach(el => {
+      el.addEventListener('input', calculateAll);
+      el.addEventListener('change', calculateAll);
     });
 
-    [invSender, invClient, invNumber, invDueDate].forEach(i => i.addEventListener('input', updateInvoicePreview));
-    document.querySelectorAll('.item-row input').forEach(i => i.addEventListener('input', updateInvoicePreview));
+    document.querySelectorAll('input[name="weightUnit"]').forEach(el => {
+      el.addEventListener('change', calculateAll);
+    });
 
-    // Initialize all
-    calculateRate();
-    calculateFee();
-    updateInvoicePreview();
+    // Run initial calculation
+    calculateAll();
   </script>
 </body>
 </html>
